@@ -1,0 +1,15 @@
+steps:
+  - checkout: manifests
+    path: manifests
+  - task: KubernetesManifest@0
+    name: bake
+    inputs:
+      action: bake
+      renderType: kustomize
+      kustomizationPath: $(KUSTOMIZATION_PATH)
+  - task: KubernetesManifest@0
+    inputs:
+      action: deploy
+      manifests: $(bake.manifestsBundle)
+      containers: |
+        $(REGISTRY_URI)/$(IMAGE_NAME):$(Build.BuildNumber)
