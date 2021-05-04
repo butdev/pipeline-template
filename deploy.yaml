@@ -13,3 +13,4 @@ steps:
       manifests: $(bake.manifestsBundle)
       containers: |
         $(REGISTRY_URI)/$(IMAGE_NAME):$(Build.BuildNumber)
+      imagePullSecrets: myacr-secret
