@@ -12,4 +12,4 @@ steps:
       action: deploy
       manifests: $(bake.manifestsBundle)
       containers: |
-        $(REGISTRY_URI)/$(IMAGE_NAME):$(BUILD_BUILDNUMBER)
+        $(REGISTRY_URI)/$(IMAGE_NAME):$(Build.BuildNumber)
